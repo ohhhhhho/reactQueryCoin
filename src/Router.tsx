@@ -5,7 +5,7 @@ import Coins from "./Routes/Coins";
 import Price from "./Routes/Price";
 import Coin from "./Routes/Coin";
 import Root from "./Root";
-
+const basename = process.env.PUBLIC_URL;
 
 
 const router = createBrowserRouter([
@@ -32,6 +32,8 @@ const router = createBrowserRouter([
           ],
         },
       ],
+      
     },
-  ]);
+    
+  ],{basename: basename});
 export default router;
