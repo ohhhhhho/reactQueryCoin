@@ -1,0 +1,12 @@
+{
+  "files": {
+    "main.js": "/reactQueryCoin/static/js/main.5e546535.js",
+    "static/js/453.dd234f10.chunk.js": "/reactQueryCoin/static/js/453.dd234f10.chunk.js",
+    "index.html": "/reactQueryCoin/index.html",
+    "main.5e546535.js.map": "/reactQueryCoin/static/js/main.5e546535.js.map",
+    "453.dd234f10.chunk.js.map": "/reactQueryCoin/static/js/453.dd234f10.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/js/main.5e546535.js"
+  ]
+}
