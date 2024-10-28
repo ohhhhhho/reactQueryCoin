@@ -2,6 +2,8 @@ import { useQuery } from "@tanstack/react-query"
 import { useLocation } from "react-router-dom"
 import { fetchCoinHistory } from "../api"
 import ReactApexChart from "react-apexcharts"
+import { useRecoilValue } from "recoil"
+import { isDarkAtom } from "../atoms"
 
 interface ChartState{
     state:string
@@ -25,6 +27,7 @@ function Chart(){
         refetchInterval:5000
     })
     console.log('ChartChart',data)
+    const isDark = useRecoilValue(isDarkAtom);
     return(
         <>
             <div>{isLoading ? "Loading..." : 
@@ -38,7 +41,7 @@ function Chart(){
                 ]} 
                 options={{
                     theme:{
-                        mode:"dark"
+                        mode:isDark?"dark":"light"
                     },
                     chart:{
                     height:300,

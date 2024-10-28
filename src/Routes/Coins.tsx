@@ -4,6 +4,8 @@ import { Outlet, Route } from "react-router-dom";
 import { Link } from "react-router-dom";
 import styled from "styled-components"
 import { fetchCoins } from "../api";
+import { useRecoilState } from "recoil";
+import { isDarkAtom } from "../atoms";
 
 const Container = styled.div`
     background-color:${props => props.theme.bgColor};
@@ -43,20 +45,14 @@ const Coins = () => {
         queryFn: fetchCoins,
         select: data => data.slice(0, 100)
         });    
-    // const [coins,setCoins] = useState<CoinInterface[]>([])
-    // const [loading,setLoading] = useState(true)
-    // useEffect(() => {
-    //     (async()=>{
-    //       const json = await (await fetch("https://api.coinpaprika.com/v1/coins")).json()
-    //       setCoins(json.slice(0,100))
-    //       setLoading(!loading)
-    //     })()
-    // },[])
-    // console.log('coins',coins)
-
+        //useRecoilState은 value를 수정
+        const [isDark, setterFn] = useRecoilState(isDarkAtom);
+        const toggleDarkMode = () =>setterFn((pre) => !pre)
     return(
         <>
         {isLoading ? "Loading..." : 
+        <>
+        <button onClick={toggleDarkMode}>Toggle Mode</button>
         <Container>
             <CoinList>
                 {data?.map((item) => (
@@ -67,6 +63,7 @@ const Coins = () => {
                 <Coin/>
             </CoinList>
         </Container>
+        </>
         }
         </>
     )
